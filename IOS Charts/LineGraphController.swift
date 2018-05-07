@@ -1,19 +1,15 @@
-//
-//  ViewController.swift
-//  IOS Charts
-//
-//  Created by John Allen on 5/4/18.
-//  Copyright © 2018 jallen.studios. All rights reserved.
-//
+
+
+
 
 import UIKit
 import Charts
 
-class ViewController: UIViewController {
-
+class LineGraphController: UIViewController, ChartViewDelegate {
     
-    var times: [Double] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] //holds time at every sensor value
-    var sensorValues: [Double] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] //holds all values from LoPy
+    
+    var times: [Double] = [0] //holds time at every sensor value
+    var sensorValues: [Double] = [0] //holds all values from LoPy
     var totalXmoved = 0.0
     
     let chtChart: LineChartView = {
@@ -53,7 +49,7 @@ class ViewController: UIViewController {
         topContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12).isActive = true
         
         topContainer.addSubview(titleLabel)
-       
+        
         titleLabel.topAnchor.constraint(equalTo: topContainer.topAnchor, constant: 0).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: topContainer.trailingAnchor, constant: 0).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: topContainer.leadingAnchor, constant: 0).isActive = true
@@ -66,27 +62,7 @@ class ViewController: UIViewController {
         chtChart.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         chtChart.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         chtChart.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-        updateGraph()
-    }
-
-    var totalValues = 17
-   
-    
-    @objc func update() {
-        let number = arc4random_uniform(20)
-        times.append(Double(totalValues))
-        totalValues = 1 + totalValues
-        sensorValues.append(Double(number))
-        updateGraph()
-    }
-    
-    var firstTime = true
-    
-    func updateGraph() {
-       
-
-        
+        self.chtChart.delegate = self
         var lineChartEntry  = [ChartDataEntry]()
         
         for i in 0..<times.count {
@@ -112,14 +88,6 @@ class ViewController: UIViewController {
         chartDataSet.drawCirclesEnabled = true
         chartDataSet.lineWidth = 2
         chartDataSet.mode = .horizontalBezier
-    
-        
-        if(firstTime){
-            chtChart.animate(xAxisDuration: 1, easingOption: .easeInCubic)
-            firstTime = false
-            chtChart.moveViewToAnimated(xValue: 16, yValue: 0, axis: YAxis.AxisDependency.left, duration: 1, easing: nil)
-        }
-        
         chtChart.xAxis.labelPosition = .bottom
         chtChart.xAxis.drawGridLinesEnabled = false
         chtChart.chartDescription?.enabled = true
@@ -129,24 +97,41 @@ class ViewController: UIViewController {
         chtChart.leftAxis.labelFont = UIFont(name: "AppleSDGothicNeo-Medium", size: 16)!
         chtChart.xAxis.labelFont = UIFont(name: "AppleSDGothicNeo-Medium", size: 16)!
         chtChart.leftAxis.drawAxisLineEnabled = false
-       
+        
         
         chtChart.leftAxis.drawGridLinesEnabled = true
         chtChart.leftAxis.drawLabelsEnabled = true
         chtChart.leftAxis.gridColor = NSUIColor.gray.withAlphaComponent(0.4)
         chtChart.data = chartData
         
+        var timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(update), userInfo: nil, repeats: true)
+        
+  
         
         
-        if (times.count > 14)
-        {
-            //chtChart.moveViewToX(totalXmoved)
-            chtChart.moveViewToAnimated(xValue: totalXmoved, yValue: 0, axis: YAxis.AxisDependency.left, duration: 1, easing: nil)
-
-            totalXmoved += 1.0
-        }
-        
-        
+    }
+    
+    var totalValues = 1
+    
+    
+    @objc func update() {
+        let number = arc4random_uniform(20)
+        times.append(Double(totalValues))
+        totalValues = 1 + totalValues
+        sensorValues.append(Double(number))
+        updateGraph()
+    }
+    
+    var firstTime = true
+    var i = 0
+    func updateGraph() {
+        let entry = ChartDataEntry(x: times[i], y: sensorValues[i])
+        chtChart.data?.addEntry(entry, dataSetIndex: 0)
+        self.chtChart.setVisibleXRange(minXRange: 1, maxXRange: 14)
+        self.chtChart.notifyDataSetChanged()
+        self.chtChart.moveViewToAnimated(xValue: Double(i), yValue: 0, axis: YAxis.AxisDependency.left
+            , duration: 0.1)
+        i = i + 1
     }
     
     func colorWithHexString(hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
@@ -176,4 +161,5 @@ class ViewController: UIViewController {
     
     
 }
+
 
