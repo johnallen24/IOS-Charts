@@ -65,25 +65,35 @@ let horizontalProgressBar: GTProgressBar = {
     progressBar.translatesAutoresizingMaskIntoConstraints = false
     progressBar.backgroundColor = UIColor.white
     progressBar.progress = 1
-    progressBar.barBorderColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
-    progressBar.barFillColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
-    progressBar.barBackgroundColor = UIColor(red:0.77, green:0.93, blue:0.78, alpha:1.0)
     progressBar.barBorderWidth = 1
     progressBar.barFillInset = 2
     progressBar.labelTextColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
     progressBar.progressLabelInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     progressBar.font = UIFont.boldSystemFont(ofSize: 18)
     progressBar.labelPosition = GTProgressBarLabelPosition.top
-    progressBar.barMaxHeight = 12
+    progressBar.barMaxHeight = 20 //12
     progressBar.direction = GTProgressBarDirection.clockwise
     progressBar.orientation = .horizontal
+    progressBar.displayLabel = false
     return progressBar
 }()
 
 let verticalProgressBar: GTProgressBar = {
-    let view = GTProgressBar()
-    view.translatesAutoresizingMaskIntoConstraints = false
-    return view
+    let progressBar = GTProgressBar()
+    progressBar.translatesAutoresizingMaskIntoConstraints = false
+    progressBar.backgroundColor = UIColor.white
+    progressBar.progress = 1
+    progressBar.barBorderWidth = 1
+    progressBar.barFillInset = 2
+    progressBar.labelTextColor = UIColor(red:0.35, green:0.80, blue:0.36, alpha:1.0)
+    progressBar.progressLabelInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    progressBar.font = UIFont.boldSystemFont(ofSize: 18)
+    progressBar.labelPosition = GTProgressBarLabelPosition.top
+    progressBar.barMaxWidth = 60
+    progressBar.direction = GTProgressBarDirection.clockwise
+    progressBar.orientation = .vertical
+    progressBar.displayLabel = false
+    return progressBar
 }()
     
     
@@ -92,6 +102,12 @@ let verticalProgressBar: GTProgressBar = {
     override func viewDidLoad() {
         super.viewDidLoad()
          var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        horizontalProgressBar.barBorderColor = colorWithHexString(hexString: "#fe117c")
+        horizontalProgressBar.barFillColor = colorWithHexString(hexString: "#fe117c")
+        horizontalProgressBar.barBackgroundColor = colorWithHexString(hexString: "#fe117c").withAlphaComponent(0.2)
+        verticalProgressBar.barBorderColor = colorWithHexString(hexString: "#fe117c")
+        verticalProgressBar.barFillColor = colorWithHexString(hexString: "#fe117c")
+        verticalProgressBar.barBackgroundColor = colorWithHexString(hexString: "#fe117c").withAlphaComponent(0.2)
         pieChart.set(colors: colorWithHexString(hexString: "#fe117c"))
         setupViews()
     }
@@ -103,12 +119,24 @@ let verticalProgressBar: GTProgressBar = {
         view.addSubview(titleLabel)
         view.addSubview(topContainer)
         view.addSubview(bottomContainer)
+        topContainer.addSubview(chtChart)
+        topContainer.addSubview(pieChart)
+        bottomContainer.addSubview(horizontalProgressBar)
+        bottomContainer.addSubview(verticalProgressBar)
+        
         titleLabel.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         titleLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.12).isActive = true
         
-        topContainer.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
+        
+        horizontalProgressBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
+        horizontalProgressBar.heightAnchor.constraint(equalTo: bottomContainer.heightAnchor, multiplier: 0.05).isActive = true
+        horizontalProgressBar.leadingAnchor.constraint(equalTo: bottomContainer.leadingAnchor, constant: 0).isActive = true
+        horizontalProgressBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        
+        
+        topContainer.topAnchor.constraint(equalTo: horizontalProgressBar.bottomAnchor, constant: 0).isActive = true
         topContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         topContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         topContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.50).isActive = true
@@ -119,38 +147,29 @@ let verticalProgressBar: GTProgressBar = {
        bottomContainer.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: 0).isActive = true
         
         
-        topContainer.addSubview(chtChart)
-        topContainer.addSubview(pieChart)
-        
         chtChart.topAnchor.constraint(equalTo: topContainer.topAnchor, constant: 0).isActive = true
-        chtChart.widthAnchor.constraint(equalTo: topContainer.widthAnchor, multiplier: 0.75).isActive = true
+        
         chtChart.bottomAnchor.constraint(equalTo: topContainer.bottomAnchor, constant: 0).isActive = true
         chtChart.leadingAnchor.constraint(equalTo: topContainer.leadingAnchor, constant: 0).isActive = true
+        chtChart.trailingAnchor.constraint(equalTo: topContainer.trailingAnchor, constant: 0).isActive = true
         chtChart.backgroundColor = UIColor.white
         
         
-        pieChart.topAnchor.constraint(equalTo: topContainer.topAnchor, constant: 0).isActive = true
-        pieChart.bottomAnchor.constraint(equalTo: topContainer.bottomAnchor, constant: 0).isActive = true
-        pieChart.leadingAnchor.constraint(equalTo: chtChart.trailingAnchor, constant: 0).isActive = true
-        pieChart.trailingAnchor.constraint(equalTo: topContainer.trailingAnchor, constant: 0).isActive = true
+        pieChart.topAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: 0).isActive = true
+        pieChart.bottomAnchor.constraint(equalTo: bottomContainer.bottomAnchor, constant: 0).isActive = true
+        pieChart.leadingAnchor.constraint(equalTo: bottomContainer.leadingAnchor, constant: 0).isActive = true
+       pieChart.widthAnchor.constraint(equalTo: bottomContainer.widthAnchor, multiplier: 0.5).isActive = true
         
         pieChart.backgroundColor = UIColor.white
         
-        bottomContainer.addSubview(horizontalProgressBar)
-        bottomContainer.addSubview(verticalProgressBar)
         
-        
-        horizontalProgressBar.topAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: 0).isActive = true
-        horizontalProgressBar.widthAnchor.constraint(equalTo: bottomContainer.widthAnchor, multiplier: 0.5).isActive = true
-        horizontalProgressBar.bottomAnchor.constraint(equalTo: bottomContainer.bottomAnchor, constant: 0).isActive = true
-        horizontalProgressBar.leadingAnchor.constraint(equalTo: bottomContainer.leadingAnchor, constant: 0).isActive = true
         
         verticalProgressBar.topAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: 0).isActive = true
         verticalProgressBar.bottomAnchor.constraint(equalTo: bottomContainer.bottomAnchor, constant: 0).isActive = true
-        verticalProgressBar.leadingAnchor.constraint(equalTo: horizontalProgressBar.trailingAnchor, constant: 0).isActive = true
+        verticalProgressBar.leadingAnchor.constraint(equalTo: pieChart.trailingAnchor, constant: 0).isActive = true
         verticalProgressBar.trailingAnchor.constraint(equalTo: bottomContainer.trailingAnchor, constant: 0).isActive = true
         
-        
+        verticalProgressBar.barMaxHeight = view.bounds.height
     
     }
 
@@ -168,6 +187,7 @@ let verticalProgressBar: GTProgressBar = {
         let angle = percentage * 360
         pieChart.animate(toAngle: angle, duration: 0.75, completion: nil)
         horizontalProgressBar.animateTo(progress: CGFloat(percentage))
+        verticalProgressBar.animateTo(progress: CGFloat(percentage))
         
         times.append(Double(totalValues))
         totalValues = 1 + totalValues
