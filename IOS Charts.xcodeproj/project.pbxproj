@@ -14,6 +14,24 @@
 		AB7DECA3209D496900B807E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7DECA1209D496900B807E8 /* LaunchScreen.storyboard */; };
 		ABBC74E0209E823600825365 /* OtherGraphsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74DF209E823600825365 /* OtherGraphsController.swift */; };
 		ABBC74E2209F6C2D00825365 /* LineGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74E1209F6C2D00825365 /* LineGraphController.swift */; };
+		ABBC74E4209FFCE300825365 /* PieChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74E3209FFCE200825365 /* PieChartController.swift */; };
+		ABBC74E820A0120700825365 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74E720A0120600825365 /* KDCircularProgress.swift */; };
+		ABBC74EA20A0122800825365 /* KDPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74E920A0122800825365 /* KDPieChart.swift */; };
+		ABBC74F420A12D9800825365 /* ProgressBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74F320A12D9800825365 /* ProgressBarController.swift */; };
+		ABBC750620A131B300825365 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = ABBC74F720A131B300825365 /* .gitkeep */; };
+		ABBC750720A131B300825365 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = ABBC74F920A131B300825365 /* .gitkeep */; };
+		ABBC750820A131B300825365 /* FrameCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74FA20A131B300825365 /* FrameCalculator.swift */; };
+		ABBC750920A131B300825365 /* GTProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74FB20A131B300825365 /* GTProgressBar.swift */; };
+		ABBC750A20A131B300825365 /* GTProgressBarCornerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74FC20A131B300825365 /* GTProgressBarCornerType.swift */; };
+		ABBC750B20A131B300825365 /* GTProgressBarDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74FD20A131B300825365 /* GTProgressBarDirection.swift */; };
+		ABBC750C20A131B300825365 /* GTProgressBarLabelPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74FE20A131B300825365 /* GTProgressBarLabelPosition.swift */; };
+		ABBC750D20A131B300825365 /* GTProgressBarOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC74FF20A131B300825365 /* GTProgressBarOrientation.swift */; };
+		ABBC750E20A131B300825365 /* HorizontalLabelPositionFrameCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC750020A131B300825365 /* HorizontalLabelPositionFrameCalculator.swift */; };
+		ABBC750F20A131B300825365 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC750120A131B300825365 /* UILabelExtensions.swift */; };
+		ABBC751020A131B300825365 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC750220A131B300825365 /* UIViewExtensions.swift */; };
+		ABBC751120A131B300825365 /* VerticalLabelPositionFrameCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC750320A131B300825365 /* VerticalLabelPositionFrameCalculator.swift */; };
+		ABBC751220A131B300825365 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABBC750520A131B300825365 /* Info.plist */; };
+		ABBC753220A13AE600825365 /* AllChartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC753120A13AE600825365 /* AllChartsController.swift */; };
 		DC2C100A1FA6130730330A17 /* Pods_IOS_Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D31B2C5D3210D18D9C5C16 /* Pods_IOS_Charts.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +47,25 @@
 		AB7DECA4209D496900B807E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABBC74DF209E823600825365 /* OtherGraphsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherGraphsController.swift; sourceTree = "<group>"; };
 		ABBC74E1209F6C2D00825365 /* LineGraphController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphController.swift; sourceTree = "<group>"; };
+		ABBC74E3209FFCE200825365 /* PieChartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartController.swift; sourceTree = "<group>"; };
+		ABBC74E720A0120600825365 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KDCircularProgress.swift; path = "../../../Downloads/KDCircularProgress-master/KDCircularProgress/KDCircularProgress.swift"; sourceTree = "<group>"; };
+		ABBC74E920A0122800825365 /* KDPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDPieChart.swift; sourceTree = "<group>"; };
+		ABBC74F320A12D9800825365 /* ProgressBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarController.swift; sourceTree = "<group>"; };
+		ABBC74F720A131B300825365 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		ABBC74F920A131B300825365 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		ABBC74FA20A131B300825365 /* FrameCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameCalculator.swift; sourceTree = "<group>"; };
+		ABBC74FB20A131B300825365 /* GTProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTProgressBar.swift; sourceTree = "<group>"; };
+		ABBC74FC20A131B300825365 /* GTProgressBarCornerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTProgressBarCornerType.swift; sourceTree = "<group>"; };
+		ABBC74FD20A131B300825365 /* GTProgressBarDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTProgressBarDirection.swift; sourceTree = "<group>"; };
+		ABBC74FE20A131B300825365 /* GTProgressBarLabelPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTProgressBarLabelPosition.swift; sourceTree = "<group>"; };
+		ABBC74FF20A131B300825365 /* GTProgressBarOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTProgressBarOrientation.swift; sourceTree = "<group>"; };
+		ABBC750020A131B300825365 /* HorizontalLabelPositionFrameCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalLabelPositionFrameCalculator.swift; sourceTree = "<group>"; };
+		ABBC750120A131B300825365 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		ABBC750220A131B300825365 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		ABBC750320A131B300825365 /* VerticalLabelPositionFrameCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalLabelPositionFrameCalculator.swift; sourceTree = "<group>"; };
+		ABBC750420A131B300825365 /* GTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTProgressBar.h; sourceTree = "<group>"; };
+		ABBC750520A131B300825365 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABBC753120A13AE600825365 /* AllChartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChartsController.swift; sourceTree = "<group>"; };
 		E61D5D192ACEA7829DB05E67 /* Pods-IOS Charts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS Charts.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS Charts/Pods-IOS Charts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,15 +112,59 @@
 			isa = PBXGroup;
 			children = (
 				AB7DEC98209D496900B807E8 /* AppDelegate.swift */,
+				ABBC753120A13AE600825365 /* AllChartsController.swift */,
 				AB7DEC9A209D496900B807E8 /* ViewController.swift */,
 				ABBC74DF209E823600825365 /* OtherGraphsController.swift */,
 				ABBC74E1209F6C2D00825365 /* LineGraphController.swift */,
+				ABBC74E3209FFCE200825365 /* PieChartController.swift */,
+				ABBC74E920A0122800825365 /* KDPieChart.swift */,
+				ABBC74E720A0120600825365 /* KDCircularProgress.swift */,
 				AB7DEC9C209D496900B807E8 /* Main.storyboard */,
+				ABBC74F320A12D9800825365 /* ProgressBarController.swift */,
+				ABBC74F520A131B300825365 /* GTProgressBar */,
 				AB7DEC9F209D496900B807E8 /* Assets.xcassets */,
-				AB7DECA1209D496900B807E8 /* LaunchScreen.storyboard */,
 				AB7DECA4209D496900B807E8 /* Info.plist */,
+				AB7DECA1209D496900B807E8 /* LaunchScreen.storyboard */,
 			);
 			path = "IOS Charts";
+			sourceTree = "<group>";
+		};
+		ABBC74F520A131B300825365 /* GTProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				ABBC74F620A131B300825365 /* Assets */,
+				ABBC74F820A131B300825365 /* Classes */,
+				ABBC750420A131B300825365 /* GTProgressBar.h */,
+				ABBC750520A131B300825365 /* Info.plist */,
+			);
+			name = GTProgressBar;
+			path = "../../../Downloads/GTProgressBar-master/GTProgressBar";
+			sourceTree = "<group>";
+		};
+		ABBC74F620A131B300825365 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				ABBC74F720A131B300825365 /* .gitkeep */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		ABBC74F820A131B300825365 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ABBC74F920A131B300825365 /* .gitkeep */,
+				ABBC74FA20A131B300825365 /* FrameCalculator.swift */,
+				ABBC74FB20A131B300825365 /* GTProgressBar.swift */,
+				ABBC74FC20A131B300825365 /* GTProgressBarCornerType.swift */,
+				ABBC74FD20A131B300825365 /* GTProgressBarDirection.swift */,
+				ABBC74FE20A131B300825365 /* GTProgressBarLabelPosition.swift */,
+				ABBC74FF20A131B300825365 /* GTProgressBarOrientation.swift */,
+				ABBC750020A131B300825365 /* HorizontalLabelPositionFrameCalculator.swift */,
+				ABBC750120A131B300825365 /* UILabelExtensions.swift */,
+				ABBC750220A131B300825365 /* UIViewExtensions.swift */,
+				ABBC750320A131B300825365 /* VerticalLabelPositionFrameCalculator.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		D20EC9CF621236D6E324C5EA /* Frameworks */ = {
@@ -157,8 +238,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB7DECA3209D496900B807E8 /* LaunchScreen.storyboard in Resources */,
+				ABBC750620A131B300825365 /* .gitkeep in Resources */,
+				ABBC750720A131B300825365 /* .gitkeep in Resources */,
 				AB7DECA0209D496900B807E8 /* Assets.xcassets in Resources */,
 				AB7DEC9E209D496900B807E8 /* Main.storyboard in Resources */,
+				ABBC751220A131B300825365 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +307,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBC74E820A0120700825365 /* KDCircularProgress.swift in Sources */,
+				ABBC74EA20A0122800825365 /* KDPieChart.swift in Sources */,
+				ABBC750C20A131B300825365 /* GTProgressBarLabelPosition.swift in Sources */,
+				ABBC74F420A12D9800825365 /* ProgressBarController.swift in Sources */,
 				AB7DEC9B209D496900B807E8 /* ViewController.swift in Sources */,
+				ABBC74E4209FFCE300825365 /* PieChartController.swift in Sources */,
+				ABBC750E20A131B300825365 /* HorizontalLabelPositionFrameCalculator.swift in Sources */,
+				ABBC750820A131B300825365 /* FrameCalculator.swift in Sources */,
+				ABBC753220A13AE600825365 /* AllChartsController.swift in Sources */,
+				ABBC750B20A131B300825365 /* GTProgressBarDirection.swift in Sources */,
+				ABBC751020A131B300825365 /* UIViewExtensions.swift in Sources */,
+				ABBC750A20A131B300825365 /* GTProgressBarCornerType.swift in Sources */,
+				ABBC750D20A131B300825365 /* GTProgressBarOrientation.swift in Sources */,
+				ABBC751120A131B300825365 /* VerticalLabelPositionFrameCalculator.swift in Sources */,
+				ABBC750920A131B300825365 /* GTProgressBar.swift in Sources */,
+				ABBC750F20A131B300825365 /* UILabelExtensions.swift in Sources */,
 				ABBC74E0209E823600825365 /* OtherGraphsController.swift in Sources */,
 				ABBC74E2209F6C2D00825365 /* LineGraphController.swift in Sources */,
 				AB7DEC99209D496900B807E8 /* AppDelegate.swift in Sources */,

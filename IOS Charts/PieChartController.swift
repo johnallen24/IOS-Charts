@@ -1,18 +1,14 @@
-
-
-
-
 import UIKit
 import Charts
 
-class OtherGraphsController: UIViewController, ChartViewDelegate {
+class PieChartController: UIViewController, ChartViewDelegate {
     
     
     var times: [Double] = [1,2] //holds time at every sensor value
-    var sensorValues: [Double] = [5,10]
-
-    let chtChart: BarChartView = {
-        let view = BarChartView()
+    var sensorValues: [Double] = [1,2]
+    
+    let chtChart: PieChartView = {
+        let view = PieChartView()
         //view.noDataText = "Connect to sensor"
         //view.noDataFont = NSUIFont(name: "HelveticaNeue", size: 18.0)
         return view
@@ -61,69 +57,66 @@ class OtherGraphsController: UIViewController, ChartViewDelegate {
         chtChart.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         chtChart.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         chtChart.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: 0).isActive = true
-         var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateGraph), userInfo: nil, repeats: true)
+        var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateGraph), userInfo: nil, repeats: true)
         chtChart.delegate = self
         
-       
+        
     }
     
-   var firstTime = true
-   var maxY = 14
+    var firstTime = true
+    var maxY = 14
     @objc func updateGraph()
     {
         let number = Double(arc4random_uniform(5)) + Double(Float(arc4random()) / Float(UINT32_MAX)).rounded(toPlaces: 2)
+        let oppositeNumber = 5.0 - number
+        sensorValues[0] = number
+        sensorValues[1] = oppositeNumber
+        
         titleLabel.text = "Voltage: \(Double(number))"
-        if (firstTime)
-        {
-            var dataEntry: [BarChartDataEntry] = []
+//        if (firstTime)
+//        {
+            var dataEntry: [PieChartDataEntry] = []
             for i in 0..<times.count {
                 
-                let value = BarChartDataEntry(x: times[i], y: sensorValues[i])
-                
+                let value = PieChartDataEntry(value: sensorValues[i])
                 dataEntry.append(value)
             }
             
             
-            let chartDataSet = BarChartDataSet(values: dataEntry, label: "BPM")
-            let chartData = BarChartData()
+            let chartDataSet = PieChartDataSet(values: dataEntry, label: "BPM")
+            chartDataSet.colors = [UIColor.blue, UIColor.clear]
+            let chartData = PieChartData ()
             
             
             chartData.addDataSet(chartDataSet)
-            chartData.setDrawValues(false)
-            chartData.barWidth = Double(0.5)
             
-            chtChart.leftAxis.axisMinimum = 0
-            chtChart.rightAxis.enabled = false
-            chtChart.animate(yAxisDuration: 1, easingOption: .easeOutBack)
-           chtChart.xAxis.drawGridLinesEnabled = false
-            chtChart.xAxis.drawAxisLineEnabled = false
-            chtChart.xAxis.drawLabelsEnabled = false
-            chtChart.leftAxis.drawGridLinesEnabled = false
-            chtChart.leftAxis.drawLabelsEnabled = false
-            chtChart.leftAxis.drawAxisLineEnabled = false
-            chtChart.legend.enabled = false
+            
+            
+            //chtChart.animate(yAxisDuration: 1, easingOption: .easeOutBack)
+            
+            chtChart.legend.enabled = true
             chtChart.chartDescription?.text = ""
             
-            chartDataSet.colors = [colorWithHexString(hexString: "#fe117c"), UIColor.clear]
+            //chartDataSet.colors = [colorWithHexString(hexString: "#fe117c"), UIColor.blue]
             //chtChart.setVisibleXRange(minXRange: 1, maxXRange: 4)
             
             chtChart.data = chartData
             firstTime = false
-        }
-     
-    
-        chtChart.setVisibleYRangeMaximum(5, axis: YAxis.AxisDependency.left)
-        chtChart.setVisibleYRangeMinimum(5, axis: YAxis.AxisDependency.left)
-       //add half of visible range to full visible range and then subtract number
-        chtChart.moveViewToAnimated(xValue: 0, yValue: 7.5 - number, axis: YAxis.AxisDependency.left, duration: 0.75, easing: nil)
-        //chtChart.setVisibleYRange(minYRange: 0, maxYRange: 5, axis: YAxis.AxisDependency.left)
+        
+       // }
+        
+        
        
+        //add half of visible range to full visible range and then subtract number
+       
+        //chtChart.setVisibleYRange(minYRange: 0, maxYRange: 5, axis: YAxis.AxisDependency.left)
+        
         
         maxY = 1 + maxY
         
     }
     
-
+    
     func colorWithHexString(hexString: String, alpha:CGFloat? = 1.0) -> UIColor {
         
         // Convert hex string to an integer
@@ -148,9 +141,16 @@ class OtherGraphsController: UIViewController, ChartViewDelegate {
         scanner.scanHexInt32(&hexInt)
         return hexInt
     }
-
+    
 }
 
 
 
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
 
